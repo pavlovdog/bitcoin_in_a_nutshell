@@ -18,7 +18,7 @@
 
 ### Keys and address
 
-Для начала создадим новую пару ключей и адрес. Как это делается я рассказывал в предыдущих статьях, так что здесь все должно быть понятно. Для ускорения процесса возьмем вот этот [набор инструментов для Bitcoin](https://github.com/vbuterin/pybitcointools), написанный самим [Виталиком Бутериным](https://ru.wikipedia.org/wiki/%D0%91%D1%83%D1%82%D0%B5%D1%80%D0%B8%D0%BD,_%D0%92%D0%B8%D1%82%D0%B0%D0%BB%D0%B8%D0%BA), хотя при желании вы можете воспользоваться фрагментами кода из предыдущих статей.
+Для начала создадим новую пару ключей и адрес. Как это делается я рассказывал в главе [Bitcoin in a nutshell - Cryptography](), так что здесь все должно быть понятно. Для ускорения процесса возьмем вот этот [набор инструментов для Bitcoin](https://github.com/vbuterin/pybitcointools), написанный самим [Виталиком Бутериным](https://ru.wikipedia.org/wiki/%D0%91%D1%83%D1%82%D0%B5%D1%80%D0%B8%D0%BD,_%D0%92%D0%B8%D1%82%D0%B0%D0%BB%D0%B8%D0%BA), хотя при желании вы можете воспользоваться уже написанными [фрагментами кода]().
 
 ```python
 $ git clone https://github.com/vbuterin/pybitcointools
@@ -42,7 +42,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ### Searching for nodes
 
-Вообще говоря, это хорошая задача на подумать - *как найти других участников сети при том, что сеть децентрализована?* Подробнее про это можете почитать [здесь](http://bitcoin.stackexchange.com/questions/3536/how-do-bitcoin-clients-find-each-other), скажу заранее, что здесь совсем децентрализованного решения пока что не существует.
+Вообще говоря, это хорошая задача на подумать: *как найти других участников сети при том, что сеть децентрализована?* Подробнее про это можете почитать [здесь](http://bitcoin.stackexchange.com/questions/3536/how-do-bitcoin-clients-find-each-other), скажу заранее, совсем децентрализованного решения пока что не существует.
 
 Я покажу два способа. Первый - это *DNS seeding*. Суть в том, что есть некоторые *доверенные* адреса, такие как:
 
@@ -74,7 +74,7 @@ Address: 96.2.103.25
 
 ### Version handshake
 
-Установка соединения между нодами начинается с обмена двумя сообщениями - первым отправляется [version message](https://en.bitcoin.it/wiki/Protocol_documentation#version), а в качестве ответа на него используется [verack message](https://en.bitcoin.it/wiki/Protocol_specification#verack). Вот иллюстрация процесса *version handshake* из [Bitcoin wiki](https://en.bitcoin.it/wiki/Version_Handshake):
+Установка соединения между нодами начинается с обмена двумя сообщениями. Первым отправляется [version message](https://en.bitcoin.it/wiki/Protocol_documentation#version), а в качестве ответа на него используется [verack message](https://en.bitcoin.it/wiki/Protocol_specification#verack). Вот иллюстрация процесса *version handshake* из [Bitcoin wiki](https://en.bitcoin.it/wiki/Version_Handshake):
 
 > When the local peer **L** connects to a remote peer **R**, the remote peer will not send any data until it receives a version message.
 -  **L -> R** Send version message with the local peer's version
@@ -89,9 +89,9 @@ Address: 96.2.103.25
 
 ![](https://qph.ec.quoracdn.net/main-qimg-a935c19e12363041547f4c402b9c80af-c?convert_to_webp=true)
 
-Каждое сообщение в сети [должно представляться](https://en.bitcoin.it/wiki/Protocol_documentation#Message_structure) в виде `magic + command + lenght + checksum + payload` - за это отвечает функция `makeMessage`. Этой функцией мы еще воспользуемся, когда будем отправлять транзакцию.
+Каждое сообщение в сети [должно представляться](https://en.bitcoin.it/wiki/Protocol_documentation#Message_structure) в виде `magic + command + lenght + checksum + payload` , за это отвечает функция `makeMessage`. Этой функцией мы еще воспользуемся, когда будем отправлять транзакцию.
 
-В коде будет постоянно использоваться библиотека [struct](https://docs.python.org/2/library/struct.html) - она отвечает за то, чтобы представлять параметры в правильном формате. Например `struct.pack("q", timestamp)` записывает текущее UNIX время в `long long int`, как этого и требует протокол.
+В коде будет постоянно использоваться библиотека [struct](https://docs.python.org/2/library/struct.html). Она отвечает за то, чтобы представлять параметры в правильном формате. Например `struct.pack("q", timestamp)` записывает текущее UNIX время в `long long int`, как этого и требует протокол.
 
 ```python
 import time
@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
 ### Making transaction
 
-Перед созданием транзакции еще раз открываем [спецификацию](https://en.bitcoin.it/wiki/Protocol_specification#tx) и внимательно ее придерживаемся - отклонение на 1 байт уже делает транзакцию невалидной, так что нужно быть предельно аккуратным. 
+Перед созданием транзакции еще раз открываем [спецификацию](https://en.bitcoin.it/wiki/Protocol_specification#tx) и внимательно ее придерживаемся. Отклонение на 1 байт уже делает транзакцию невалидной, так что нужно быть предельно аккуратным. 
 
 Для начала зададим адреса, приватный ключ и хэш [транзакции](https://blockchain.info/tx/60ee91bc1563e44866c66937b141e9ef4615a272fa9d764b9468c2a673c55e01), на которую мы будем ссылаться:
 
@@ -220,18 +220,18 @@ sigscript = sign + "\01" + struct.pack("<B", len(public_key.decode("hex"))) + pu
 
 real_tx = (version + tx_in_count + tx_in["outpoint_hash"] + tx_in["outpoint_index"] +
 struct.pack("<B", (len(sigscript) + 1)) + struct.pack("<B", len(sign) + 1) + sigscript +
-tx_in["sequence"] + tx_out_count + tx_ou["value"] + tx_out["pk_script_bytes"] + tx_out["pk_script"] + lock_time)
+tx_in["sequence"] + tx_out_count + tx_out["value"] + tx_out["pk_script_bytes"] + tx_out["pk_script"] + lock_time)
 
 return real_tx
 ```
 
 ### Sniff & spoof
 
-Здесь нужно пояснить одну деталь. Я думаю вы понимаете, зачем мы вообще подписываем транзакции - это делается для того, чтобы никто не смог изменить наше сообщение и отправить его дальше по сети, потому что изменится подпись соощения и так далее.
+Здесь нужно пояснить одну деталь. Я думаю вы понимаете, зачем мы вообще подписываем транзакции. Это делается для того, чтобы никто не смог изменить наше сообщение и отправить его дальше по сети, потому что изменится подпись сообщения и так далее.
 
-Но если вы внимательно слушали, то запомнили, что мы подписываем не настоящую транзакцию, которая в конечном итоге будет отправлена другим нодам, а ее модификацию, где в unlocking script указыван locking script из выхода, на который мы ссылаемся. В приципе понятно, почему это происходит: в настоящий unlocking script должна быть записана эта самая подпись и получается какой-то замкнутый круг - для правильной подписи нужен правильный unlocking script, для правильного unlocking script нужна правильная подпись. Так что Сатоши пошел на компромисс и разрешил пользоваться не совсем "настоящими" подписями.
+Но если вы внимательно читали, то запомнили, что мы подписываем ненастоящую транзакцию, которая в конечном итоге будет отправлена другим нодам, а ее модификацию, где в unlocking script указан locking script из выхода, на который мы ссылаемся. В приципе понятно, почему это происходит: в настоящий unlocking script должна быть записана эта самая подпись, и получается замкнутый круг: для правильной подписи нужен правильный unlocking script, для правильного unlocking script нужна правильная подпись. Так что Сатоши пошел на компромисс и разрешил пользоваться не совсем "настоящими" подписями.
 
-Поэтому может случится так, что кто-нибудь в сети поймает наше сообщение, изменит unlocking script и отправит отредактированное сообщение дальше - никто из нод не сможет этого проверить, потому что подпись не "защищает" unlocking script. Эта уязвимость называется **Transaction malleability**, подробнее про нее вы можете почитать [здесь](https://en.bitcoin.it/wiki/Transaction_Malleability) или посмотреть доклад с Black Hat USA 2014 - [Bitcoin Transaction Malleability Theory in Practice](https://www.youtube.com/channel/UCbbgnifxfH-nqx6z9XQ963Q). 
+Поэтому может случится так, что кто-нибудь в сети поймает наше сообщение, изменит unlocking script и отправит отредактированное сообщение дальше. Никто из нод не сможет этого проверить, потому что подпись не "защищает" unlocking script. Эта уязвимость называется **Transaction malleability**, подробнее про нее вы можете почитать [здесь](https://en.bitcoin.it/wiki/Transaction_Malleability) или посмотреть доклад с Black Hat USA 2014 - [Bitcoin Transaction Malleability Theory in Practice](https://www.youtube.com/channel/UCbbgnifxfH-nqx6z9XQ963Q). 
 
 **TL;DR** Если вы пользуетесь стандартными скриптами вроде P2PKH, то вам ничего не грозит. В противном случае стоит быть аккуратным.
 
@@ -266,13 +266,13 @@ if __name__ == "__main__":
 
 ![success](https://habrastorage.org/files/47b/d8b/84c/47bd8b84c38c46a2bdd0d173b1334d67.png)
 
-Уже через несколько секунд, после отправления транзакции в сеть, ее можно будет [отследить](https://blockchain.info/ru/address/1LwPhYQi4BRBuuyWSGVeb6kPrTqpSVmoYz), правда сначала она будет числится неподтвержденной. Потом, спустя какое-то время вплоть до нескольких часов, транзакция будет включена в блок.
+Уже через несколько секунд после отправления транзакции в сеть, ее можно будет [отследить](https://blockchain.info/ru/address/1LwPhYQi4BRBuuyWSGVeb6kPrTqpSVmoYz), правда сначала она будет числится неподтвержденной. Потом, спустя какое-то время (вплоть до нескольких часов), транзакция будет включена в блок.
 
 Если вы к тому времени не закроете Wireshark плюс в сообщении *version* укажете текущую высоту блокчейна, то вам прийдет уведомление о новом блоке в виде все того же *inv message*, но на этот раз с `TYPE = MSG_BLOCK` (я его закрыл, поэтому ниже скриншот из блога [Ken Shirriff](http://www.righto.com/)):
 
 ![msg_block](http://static.righto.com/images/bitcoin/bitcoin_wireshark_inv.png)
 
-В `Data hash` вы можете видеть длинную строку, которая на самом деле является заголовком нового блока в *little endian* форме. В данном случае это блок [#279068](https://blockchain.info/ru/block-height/279068) с заголовком *0000000000000001a27b1d6eb8c405410398ece796e742da3b3e35363c2219ee*. Куча ведущих нулей - не случайность, а последствия майнинга, о котором я рассказажу отдельно.
+В `Data hash` вы можете видеть длинную строку, которая на самом деле является заголовком нового блока в *little endian* форме. В данном случае это блок [#279068](https://blockchain.info/ru/block-height/279068) с заголовком *0000000000000001a27b1d6eb8c405410398ece796e742da3b3e35363c2219ee*. Куча ведущих нулей - не случайность, а результат майнинга, о котором я расскажу отдельно.
 
 Но перед этим вам нужно разобраться с самим блокчейном, блоками, их заголвками и так далее. Поэтому следующая глава: [Bitcoin in a nutshell - Blockchain]()
 
