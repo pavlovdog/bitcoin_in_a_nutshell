@@ -4,7 +4,7 @@
 
 ![meme](https://cdn.meme.am/cache/instances/folder64/500x/63102064.jpg)
 
-### Table of content
+## Table of content
 
 1. Keys and address
 2. Searching for nodes
@@ -16,7 +16,7 @@
 8. Sending transaction
 9. Links
 
-### Keys and address
+## Keys and address
 
 Для начала создадим новую пару ключей и адрес. Как это делается я рассказывал в главе [Bitcoin in a nutshell - Cryptography](), так что здесь все должно быть понятно. Для ускорения процесса возьмем вот этот [набор инструментов для Bitcoin](https://github.com/vbuterin/pybitcointools), написанный самим [Виталиком Бутериным](https://ru.wikipedia.org/wiki/%D0%91%D1%83%D1%82%D0%B5%D1%80%D0%B8%D0%BD,_%D0%92%D0%B8%D1%82%D0%B0%D0%BB%D0%B8%D0%BA), хотя при желании вы можете воспользоваться уже написанными [фрагментами кода]().
 
@@ -40,7 +40,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 Я [скинул](https://blockchain.info/tx/60ee91bc1563e44866c66937b141e9ef4615a272fa9d764b9468c2a673c55e01) на адрес `1LwPhYQi4BRBuuyWSGVeb6kPrTqpSVmoYz` 0.00012 BTC, так что теперь можно экспериментировать по полной программе.
 
-### Searching for nodes
+## Searching for nodes
 
 Вообще говоря, это хорошая задача на подумать: *как найти других участников сети при том, что сеть децентрализована?* Подробнее про это можете почитать [здесь](http://bitcoin.stackexchange.com/questions/3536/how-do-bitcoin-clients-find-each-other), скажу заранее, совсем децентрализованного решения пока что не существует.
 
@@ -72,7 +72,7 @@ Address: 96.2.103.25
 
 ![shodan](https://habrastorage.org/files/fb7/90e/2b8/fb790e2b891341909733064c9a232456.png) 
 
-### Version handshake
+## Version handshake
 
 Установка соединения между нодами начинается с обмена двумя сообщениями. Первым отправляется [version message](https://en.bitcoin.it/wiki/Protocol_documentation#version), а в качестве ответа на него используется [verack message](https://en.bitcoin.it/wiki/Protocol_specification#verack). Вот иллюстрация процесса *version handshake* из [Bitcoin wiki](https://en.bitcoin.it/wiki/Version_Handshake):
 
@@ -85,7 +85,7 @@ Address: 96.2.103.25
 
 Это делается в первую очередь для того, чтобы ноды узнали, какой версией протокола пользуется их "собеседник" и могли общаться на одном языке.
 
-### Setting up a connection
+## Setting up a connection
 
 ![](https://qph.ec.quoracdn.net/main-qimg-a935c19e12363041547f4c402b9c80af-c?convert_to_webp=true)
 
@@ -142,7 +142,7 @@ if __name__ == "__main__":
 
 ![wireshark](https://habrastorage.org/files/8a6/476/c95/8a6476c9570b4164bc547e094ddce279.jpg)
 
-### Making transaction
+## Making transaction
 
 Перед созданием транзакции еще раз открываем [спецификацию](https://en.bitcoin.it/wiki/Protocol_specification#tx) и внимательно ее придерживаемся. Отклонение на 1 байт уже делает транзакцию невалидной, так что нужно быть предельно аккуратным. 
 
@@ -201,7 +201,7 @@ dab3cccc50d7ff2d1d2926ec85ca186e61aef105s88ac
 ...
 ```
 
-### Signing transaction
+## Signing transaction
 
 Теперь самое время подписать транзакцию, здесь все довольно просто:
 
@@ -225,7 +225,7 @@ tx_in["sequence"] + tx_out_count + tx_out["value"] + tx_out["pk_script_bytes"] +
 return real_tx
 ```
 
-### Sniff & spoof
+## Sniff & spoof
 
 Здесь нужно пояснить одну деталь. Я думаю вы понимаете, зачем мы вообще подписываем транзакции. Это делается для того, чтобы никто не смог изменить наше сообщение и отправить его дальше по сети, потому что изменится подпись сообщения и так далее.
 
@@ -235,7 +235,7 @@ return real_tx
 
 **TL;DR** Если вы пользуетесь стандартными скриптами вроде P2PKH, то вам ничего не грозит. В противном случае стоит быть аккуратным.
 
-### Sending transaction
+## Sending transaction
 
 Отправка транзакции в сеть производится точно так же, как и в случае с *version message*:
 
@@ -276,7 +276,7 @@ if __name__ == "__main__":
 
 Но перед этим вам нужно разобраться с самим блокчейном, блоками, их заголовками и так далее. Поэтому следующая глава: [Bitcoin in a nutshell - Blockchain]()
 
-### Links
+## Links
 
 - [Bitcoins the hard way: Using the raw Bitcoin protocol](http://www.righto.com/2014/02/bitcoins-hard-way-using-raw-bitcoin.html)
 - [Analyzing Bitcoin Network Traffic Using Wireshark](https://www.samkear.com/networking/analyzing-bitcoin-network-traffic-wireshark)

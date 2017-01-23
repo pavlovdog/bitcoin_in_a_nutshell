@@ -3,8 +3,9 @@
 Удивительно, но при этом литературы, описывающей принципы работы Bitcoin, до сих пор очень мало, а та что есть, как правило, не несет никакой ценной информации. Поэтому я написал небольшую книгу для тех, кто хочет понять, как **действительно** работает Bitcoin. В ней я постарался коснуться всех основных моментов и по возможности объяснил их максимально доступным языком. Хотя книга рассчитана все-таки на людей, близких к IT сфере, благо примеров кода, специфической терминологии и несмешных шуток хватает.
 
 ![mmm_memes](https://habrastorage.org/files/aea/9d4/46d/aea9d446d8b1477b8621d6250154a55a.jpg)
-
 > "You can't stop things like Bitcoin. It will be everywhere and the world will have to readjust. World governments will have to readjust" - John McAfee, Founder of McAfee
+
+<cut />
 
 ## Дисклеймер
 
@@ -18,11 +19,11 @@
 - [Bitcoin. Как это работает](https://habrahabr.ru/post/114642/) by Habrahabr
 
 ## Оглавление
-1. [Bitcoin in a nutshell - Cryptography 🕵🏻](#)
+1. [Bitcoin in a nutshell - Cryptography 🕵](#)
 2. [Bitcoin in a nutshell - Transaction 💰](#)
 3. [Bitcoin in a nutshell - Protocol 💾]()
-4. [Bitcoin in a nutshell - Blockchain 📋](#)
-5. [Bitcoin in a nutshell - Mining 🔨](#)
+4. [Bitcoin in a nutshell - Blockchain 📋](#) // Soon
+5. [Bitcoin in a nutshell - Mining 🔨](#) // Soon
 
 ## Ссылки для общего развития
 1. ["Bitcoin: A Peer-to-Peer Electronic Cash System" by Satoshi Nakamoto](https://bitcoin.org/bitcoin.pdf)
@@ -34,3 +35,6 @@
 7. [bitcoin.stackexchange.com](https://bitcoin.stackexchange.com)
 8. [Bitcoin wiki](https://en.bitcoin.it/wiki/Main_Page)
 9. ["Mastering Bitcoin" online](http://chimera.labs.oreilly.com/books/1234000001802/ch01.html#_getting_started)
+
+Проект распостраняется под лицензией MIT. Исходники в markdown плюс фрагменты кода [здесь](https://github.com/pavlovdog/bitcoin_in_a_nutshell), contributions welcome.
+
