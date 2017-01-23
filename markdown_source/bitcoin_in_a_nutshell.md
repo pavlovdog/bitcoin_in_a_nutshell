@@ -22,8 +22,8 @@
 1. [Bitcoin in a nutshell - Cryptography 🕵](#)
 2. [Bitcoin in a nutshell - Transaction 💰](#)
 3. [Bitcoin in a nutshell - Protocol 💾]()
-4. [Bitcoin in a nutshell - Blockchain 📋](#) // Soon
-5. [Bitcoin in a nutshell - Mining 🔨](#) // Soon
+4. [Bitcoin in a nutshell - Blockchain 📋](#) 
+5. [Bitcoin in a nutshell - Mining 🔨](#)
 
 ## Ссылки для общего развития
 1. ["Bitcoin: A Peer-to-Peer Electronic Cash System" by Satoshi Nakamoto](https://bitcoin.org/bitcoin.pdf)
