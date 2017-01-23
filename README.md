@@ -37,11 +37,11 @@ MIT license
 - [Bitcoin. Как это работает](https://habrahabr.ru/post/114642/) by Habrahabr
 
 ## Оглавление
-1. [Bitcoin in a nutshell - Cryptography ](https://habrahabr.ru/post/319868/)
-2. [Bitcoin in a nutshell - Transaction ](https://habrahabr.ru/post/319860/)
-3. [Bitcoin in a nutshell - Protocol ](https://habrahabr.ru/post/319862/)
-4. [Bitcoin in a nutshell - Blockchain ](#) // Soon
-5. [Bitcoin in a nutshell - Mining ](#) // Soon
+1. [Bitcoin in a nutshell - Cryptography 🕵🏻](https://pavlovdog.github.io/notes/Bitcoin-in-a-nutshell-Cryptography)
+2. [Bitcoin in a nutshell - Transaction 💰](https://pavlovdog.github.io/notes/Bitcoin-in-a-nutshell-Transaction)
+3. [Bitcoin in a nutshell - Protocol 💾](https://pavlovdog.github.io/notes/Bitcoin-in-a-nutshell-Protocol)
+4. [Bitcoin in a nutshell - Blockchain 📋](https://pavlovdog.github.io/notes/Bitcoin-in-a-nutshell-Blockchain)
+5. [Bitcoin in a nutshell - Mining 🔨](https://pavlovdog.github.io/notes/Bitcoin-in-a-nutshell-Mining)
 
 ## Ссылки для общего развития
 1. ["Bitcoin: A Peer-to-Peer Electronic Cash System" by Satoshi Nakamoto](https://bitcoin.org/bitcoin.pdf)
