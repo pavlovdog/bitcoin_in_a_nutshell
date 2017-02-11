@@ -13,7 +13,7 @@
 #  # # #    #   #        # #    # #      #      #      
 #   ## #    #   #   #    # #    # #      #      #      
 #    #  ####    #    ####  #    # ###### ###### ###### 
-                                                       ```
+```
 
 MIT license
 © [Sergey Potekhin](https://pavlovdog.github.io/), 2016 - present
